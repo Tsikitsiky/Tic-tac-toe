@@ -1,0 +1,42 @@
+.app {
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.square {
+  border: 1px solid;
+  height: 100px;
+  background-color: transparent;
+  font-size: xx-large;
+}
+
+.board {
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.playAgainBtn {
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.playerBtn {
+  background-color: transparent;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 18px;
+}
+
+.aligned {
+  background-color: green;
+  color: white;
+}
