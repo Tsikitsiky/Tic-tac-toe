@@ -1,4 +1,4 @@
-## Tic toc toe game
+## Tic tac toe game
 This project is a tic tac toe game.
 
 It is build with React and Typescript
