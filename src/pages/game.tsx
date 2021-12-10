@@ -36,17 +36,16 @@ const GamePage = () => {
 
     const handleSquareClick = (index: number): void => {
         const newSquares = [...current]
-        if(!isWinner || !newSquares[index]) {
+        if(isWinner || newSquares[index]) return
             newSquares[index] = player;
             updateHistory(newSquares);
             updateStep(history.length);
             setNextPlayer()
-        }
     }
 
     return <>
         {step === 9 && !isWinner ? 
-        <h3>It's a tie!</h3> : 
+        <h3 data-cy='game-is-tie'>It's a tie!</h3> : 
         <h3 data-cy='game-status'>{isWinner ? `${isWinner} won` : `${player}'s turn` }</h3> }
         <Board squares={history[step]} onclick={handleSquareClick} />
         <h4>
