@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-// Fake player choosing
+// Function that clicks on player choice button based on user selection
 const selectPlayer = (playerChoice) => {
     const playerId = playerChoice === 'X' ? 1 : 2;
     cy.get(`[data-cy='player-${playerId}']`).should('have.text', playerChoice).click().then(() => {
@@ -22,12 +22,14 @@ describe('test choose first player', () => {
         cy.get("[data-cy='button-wrapper']").children('button')
     })
     it('Options should be X or O', () => {
+        // This should check if button contains X or O
         cy.get("[data-cy='button-wrapper']").find('button').contains(/X|O/g)
     })
 
     it('should choose X as a first player and should display the board and remove choose player header', () => {
         cy.get("[data-cy='player-1']").should('have.text', 'X').click().then(() => {
             cy.get('[data-cy="board"]').should('exist')
+            // text display choose the first player should disappear
             cy.get("[data-cy='player-choice']").should('not.exist')
         })
     })
@@ -80,6 +82,7 @@ describe('test game', () => {
         cy.get("[data-cy='square']").should('have.length', 9)
     })
 
+    // After clicking on a square the turn status text should change
     it('click a square should change turn text', () => {
         cy.get("[data-cy='game-status']")
         .invoke('text')
@@ -95,7 +98,7 @@ describe('test game', () => {
     })
 
 
-    // Click squares until there is a winner
+    // Click individual squares until a win condition is met
     it('should be allowed to click on squares until there is a winner', () => {
         cy.get("[data-cy='square']").eq(1).click()
         cy.get("[data-cy='square']").eq(3).click()
@@ -113,7 +116,7 @@ describe('test game', () => {
         })
     })
 
-    // Click until all squares are filled but there is no winner
+    // Click until all squares are filled without creating a win condition
     it('should allow click until all squares are filled and no one won ', () => {
         cy.get("[data-cy='square']").eq(0).click()
         cy.get("[data-cy='square']").eq(1).click()
